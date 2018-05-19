@@ -1,5 +1,7 @@
 import express from 'express';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import bodyParser from 'body-parser';
+import schema from './schema.js';
 
 
 // se inicializa la app de express
@@ -12,11 +14,11 @@ app.use('/graphiql', graphiqlExpress({
 }));
 
 
-//app.use('/graphql', graphqlExpress());
+app.use('/graphql',bodyParser.json(),graphqlExpress({schema }));
 
 
 app.listen(8000, () => {
 
-  
+
 
 });
